@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "name": "zoom",
+  "version": "1.0.0",
+  "description": "Zoom clone using WebRTC and Websockets",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoungHan-Jo/zoom.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "bugs": {
+    "url": "https://github.com/YoungHan-Jo/zoom/issues"
+  },
+  "homepage": "https://github.com/YoungHan-Jo/zoom#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "pug": "^3.0.2"
+  }
+}
