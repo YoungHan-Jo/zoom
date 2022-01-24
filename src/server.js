@@ -8,6 +8,7 @@ app.set("view engine", "pug"); // 템플릿 엔진 설정
 app.set("views", __dirname + "/src/views"); // 템플릿 위치 설정
 app.use("/public", express.static(__dirname + "/src/public"));
 app.get('/', (req,res) => res.render('home'));
+app.get("/*", (req,res)=> res.redirect("/"));
 
 const handelListen = () => console.log(`Listening on http://localhost:3000`);
 app.listen(3000, handelListen);
