@@ -1,3 +1,5 @@
+import http from "http";
+import {WebSocketServer} from "ws";
 import express from "express";
 import path from 'path';
 const __dirname = path.resolve();
@@ -12,4 +14,13 @@ app.get("/*", (req,res) => res.redirect("/")); // 어떤 url로 들어와도 홈
 
 const handleListen = () => console.log('Listening on http://localhost:3000');
 
-app.listen(3000, handleListen);
+// app.listen(3000);
+const server = http.createServer(app);
+const wss = new WebSocketServer({server}); // http 서버 위에 ws 서버 만들기// 하나의 포트로 두개 다 가능
+
+function handleConnection(socket){
+    console.log(socket);
+}
+
+wss.on("connection",handleConnection);
+server.listen(3000, handleListen);
