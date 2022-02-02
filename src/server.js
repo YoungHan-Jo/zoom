@@ -18,9 +18,24 @@ const handleListen = () => console.log('Listening on http://localhost:3000');
 const server = http.createServer(app);
 const wss = new WebSocketServer({server}); // http 서버 위에 ws 서버 만들기// 하나의 포트로 두개 다 가능
 
-function handleConnection(socket){
-    console.log(socket);
-}
+const sockets = [];
 
-wss.on("connection",handleConnection);
+wss.on("connection",(socket)=>{
+    sockets.push(socket);
+    console.log("connected to Browser ✅")
+
+    socket.on('close', ()=>{
+        console.log("disconnected From Browser ❌")
+    })
+
+    socket.on('message',(msg)=>{
+        const message = JSON.parse(msg);
+        switch(message.type){
+            case 'new_message':
+                sockets.forEach(aSocket =>{aSocket.send(message.payload.toString('utf8'))})
+            case 'nickname' :
+                console.log(message.payload)
+        }   
+    })
+});
 server.listen(3000, handleListen);
