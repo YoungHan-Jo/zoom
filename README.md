@@ -51,7 +51,7 @@ dev는 nodemon 호출 -> nodemon은 nodemon.json을 실행 -> babel-node src/ser
 
 -------------------
 npm i express -s
-npm i express -pug
+npm i pug -s
 
 -------------------
 server.js에
